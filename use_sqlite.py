@@ -39,6 +39,7 @@ c.execute("UPDATE Book set WordNum=200000 where ID=2")
 # 需要commit数据
 conn.commit()
 # 查询ID=2的数据确认是否修改
+# 这里用fetchone()只读取一条记录
 row = c.execute("SELECT * from Book where ID=2").fetchone()
 print("--Book id=" + str(row[0]) + ",title=" + row[1] + ",wordNum=" + str(row[2]))
 
