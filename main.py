@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from model.book import Book
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -9,6 +10,8 @@ async def root():
     return {"message": "Hello World"}
 
 
-@app.get("/books/{book_id}")
-async def get_book(book_id):
-    return {"book_id": book_id}
+@app.get("/books/{id}")
+async def get_book(id):
+    book=Book.get_book(id)
+    return {"id": id,"title":book.title}
+

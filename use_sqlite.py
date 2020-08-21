@@ -12,12 +12,12 @@ print("sqlite opened")
 c = conn.cursor()
 
 # 执行创建表的SQL
-c.execute('''CREATE TABLE Book
-       (ID INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL,
-       Title          TEXT    NOT NULL,
-       WordNum          INT     NOT NULL);''')
-
-conn.commit()
+# c.execute('''CREATE TABLE Book
+#        (ID INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL,
+#        Title          TEXT    NOT NULL,
+#        WordNum          INT     NOT NULL);''')
+#
+# conn.commit()
 print("Table Book created successfully")
 
 
