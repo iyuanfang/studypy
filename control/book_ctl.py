@@ -46,12 +46,13 @@ class BookCtl:
         else:
             return Book(id=book.id, title=book.title, wordNum=book.wordNum)
 
+    # 支持分页查询，page是页码，从0开始，page_size为每页记录数
     @classmethod
-    def get_books(cls):
+    def get_books(cls, page: int, page_size: int):
         session = SessionLocal()
         l: List[Book] = []
         try:
-            books = session.query(DbBook).all()
+            books = session.query(DbBook).offset(page * page_size).limit(page_size).all()
         finally:
             session.close()
         for book in books:

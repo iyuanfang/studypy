@@ -20,9 +20,11 @@ async def get_book(id):
     return book
 
 
+# 查询book，支持分页查询
+# page和page_size为查询参数，而且有默认值，调用时可以不传，也可以通过?page=1&page_size=3这样来传入
 @app.get("/books/")
-def get_books():
-    books = BookCtl.get_books()
+def get_books(page: int = 0, page_size: int = 20):
+    books = BookCtl.get_books(page, page_size)
     return books
 
 
