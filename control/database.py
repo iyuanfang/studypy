@@ -9,3 +9,6 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
+print("11111111111111111111")
+Base.metadata.create_all(bind=engine)
+print("end11111111111111111111")

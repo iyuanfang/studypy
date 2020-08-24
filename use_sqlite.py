@@ -18,7 +18,7 @@ c = conn.cursor()
 #        WordNum          INT     NOT NULL);''')
 #
 # conn.commit()
-print("Table Book created successfully")
+# print("Table Book created successfully")
 
 
 # 执行插入一条记录的SQL

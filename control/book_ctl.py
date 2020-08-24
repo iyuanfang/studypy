@@ -20,7 +20,6 @@ class BookCtl:
 
     @classmethod
     def update_book(cls, book: Book):
-        # book = DbBook(**book.dict())
         session = SessionLocal()
         try:
             book_for_update: DbBook = session.query(DbBook).filter(DbBook.id == book.id).first()
@@ -29,6 +28,7 @@ class BookCtl:
             else:
                 book_for_update.title = book.title
                 book_for_update.wordNum = book.wordNum
+                book_for_update.author_id=book.author_id
                 session.commit()
                 return {"code": 200}
         finally:
@@ -44,7 +44,7 @@ class BookCtl:
         if book is None:
             return {}
         else:
-            return Book(id=book.id, title=book.title, wordNum=book.wordNum)
+            return Book(id=book.id, title=book.title, wordNum=book.wordNum, author_id=book.author_id)
 
     # 支持分页查询，page是页码，从0开始，page_size为每页记录数
     @classmethod
@@ -56,7 +56,7 @@ class BookCtl:
         finally:
             session.close()
         for book in books:
-            l.append(Book(id=book.id, title=book.title, wordNum=book.wordNum))
+            l.append(Book(id=book.id, title=book.title, wordNum=book.wordNum, author_id=book.author_id))
         return l
 
     @classmethod
